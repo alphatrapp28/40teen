@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta name="theme-color" content="#f5d4e8">
+
+  <meta
+    name="description"
+    content="A little birthday love, sent from far away."
+  >
+
+  <title>For Mom, With Love</title>
+
+  <style>
+    :root {
+      --pink: #f3b4cf;
+      --purple: #76518e;
+      --deep: #493254;
+      --muted: #77657d;
+      --paper: #fffafc;
+      --line: #ead8e8;
+      --shadow: 0 22px 65px #69437418;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      color: var(--deep);
+      font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.7;
+
+      background:
+        radial-gradient(
+          ellipse at 10% 10%,
+          #f8d5e7,
+          transparent 48%
+        ),
+        radial-gradient(
+          ellipse at 90% 80%,
+          #dfd2f1,
+          transparent 48%
+        ),
+        #fbf3fa;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      min-height: 48px;
+      padding: .8rem 1.25rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+
+      transition:
+        transform .2s,
+        background .2s;
+    }
+
+    button,
+    summary {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    button:disabled {
+      opacity: .4;
+      cursor: default;
+    }
+
+    :focus-visible {
+      outline: 3px solid #a34d91;
+      outline-offset: 5px;
+    }
+
+    .primary {
+      background: var(--purple);
+      color: white;
+    }
+
+    .secondary {
+      background: #fff9fc;
+      border-color: var(--line);
+      color: var(--deep);
+    }
+
+    h1,
+    h2,
+    h3,
+    .signature {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: normal;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 10vw, 6rem);
+      margin: 1rem 0;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      margin: .7rem 0 1.2rem;
+    }
+
+    h3 {
+      font-size: 1.9rem;
+      margin: .5rem 0 1rem;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    .tiny {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    /* OPENING SCREEN */
+
+    .intro {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 2rem 1.2rem;
+      text-align: center;
+    }
+
+    .intro-inner {
+      max-width: 680px;
+      animation: arrive 1s both;
+    }
+
+    .intro p:not(.eyebrow) {
+      max-width: 440px;
+      margin: 1.4rem auto;
+    }
+
+    .seal {
+      display: grid;
+      place-items: center;
+      width: 86px;
+      height: 86px;
+      margin: auto;
+      border: 1px solid white;
+      border-radius: 50%;
+      background: #ffffff65;
+      color: #b46595;
+      font-size: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* MAIN PAGE */
+
+    main {
+      width: min(1040px, 100%);
+      margin: auto;
+      padding: 1rem 1rem 4rem;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .topbar p {
+      margin: 0;
+      font-size: .85rem;
+    }
+
+    .topbar .little-heart {
+      color: #b46595;
+      font-size: 1.5rem;
+    }
+
+    /* YOUTUBE PLAYER */
+
+    .song-card {
+      position: static;
+      top: 8px;
+      z-index: 10;
+      width: min(100%, 380px);
+      margin: 0 auto 2rem;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--paper);
+      box-shadow: 0 10px 30px #69437420;
+    }
+
+    .song-caption {
+      margin: 0 0 8px;
+      text-align: center;
+      color: var(--purple);
+      font-size: .78rem;
+      line-height: 1.4;
+    }
+
+    .song-player {
+      display: block;
+      width: 100%;
+      height: 203px;
+      border: 0;
+    }
+
+    /* MEMORIES */
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-heading p:last-child {
+      color: var(--muted);
+    }
+
+    .book {
+      background: var(--paper);
+      padding: clamp(1rem, 4vw, 2.5rem);
+      border: 1px solid white;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .memory {
+      display: grid;
+      align-items: center;
+      gap: 2rem;
+      animation: arrive .55s both;
+    }
+
+    .photo {
+      position: relative;
+      margin: .6rem;
+      padding: 10px 10px 35px;
+      background: white;
+      box-shadow: 0 8px 25px #51355d15;
+      transform: rotate(-2deg);
+    }
+
+    .photo::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      width: 90px;
+      height: 25px;
+      top: -12px;
+      left: calc(50% - 45px);
+      background: #e3c7eba6;
+      transform: rotate(6deg);
+    }
+
+    .photo img {
+      display: block;
+      width: 100%;
+      height: clamp(260px, 65vw, 390px);
+      object-fit: contain;
+      background: #f7edf5;
+    }
+
+    .photo-fallback {
+      min-height: 280px;
+      padding: 2rem;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      color: var(--purple);
+      background: linear-gradient(
+        145deg,
+        #fae0eb,
+        #e8def6
+      );
+    }
+
+    .photo-fallback span {
+      font-size: 2.5rem;
+    }
+
+    figcaption {
+      padding-top: 12px;
+      text-align: center;
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    .memory-copy p {
+      margin: 1rem 0;
+    }
+
+    .aside {
+      color: #966084;
+      font-style: italic;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .5rem;
+      margin-top: 2rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .navigation button {
+      padding: .65rem 1rem;
+    }
+
+    #counter {
+      font-size: .8rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .progress {
+      height: 4px;
+      margin-top: 1rem;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #eee1ef;
+    }
+
+    #progress-fill {
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        var(--pink),
+        var(--purple)
+      );
+      transition: width .4s;
+    }
+
+    /* LETTER AND DAD'S NOTE */
+
+    .letter-section {
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .letter {
+      max-width: 720px;
+      margin: 1.5rem auto;
+      text-align: left;
+      scroll-margin-top: 300px;
+      animation: arrive .6s both;
+    }
+
+    .letter-body {
+      padding: clamp(.3rem, 3vw, 1.5rem);
+    }
+
+    .letter-body p {
+      margin: 0 0 1.35rem;
+    }
+
+    .signature {
+      color: var(--purple);
+      font-size: 1.7rem;
+    }
+
+    details {
+      max-width: 720px;
+      margin: 1.5rem auto 0;
+      overflow: hidden;
+      border: 1px solid white;
+      border-radius: 20px;
+      background: #ffffff80;
+      box-shadow: var(--shadow);
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 1.3rem;
+      color: var(--purple);
+    }
+
+    details > div {
+      padding: 0 1.5rem 1rem;
+      text-align: left;
+    }
+
+    /* FINAL HUG */
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    #hug-message {
+      max-width: 440px;
+      min-height: 3.5rem;
+      margin: 1.5rem auto;
+      color: var(--purple);
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -50px;
+      z-index: 20;
+      pointer-events: none;
+      color: #bd6a9e;
+      animation: float-up 3s ease-out forwards;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes arrive {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float-up {
+      to {
+        transform: translateY(-105vh) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    /* DESKTOP LAYOUT */
+
+    @media (min-width: 760px) {
+      main {
+        padding-top: 2rem;
+      }
+
+      .memory {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+    }
+
+    /* REDUCED MOTION */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- OPENING SCREEN -->
+
+  <section
+    class="intro"
+    id="intro"
+    aria-labelledby="intro-title"
+  >
+    <div class="intro-inner">
+
+      <div class="seal" aria-hidden="true">♡</div>
+
+      <p class="eyebrow">
+        A gift, sent from a few miles away
+      </p>
+
+      <h1 id="intro-title">
+        Hi, Mommy.<br>
+        This one's for you.
+      </h1>
+
+      <p>
+        I couldn't be there to give you a birthday headache.
+        So I made a little place where I could possibly do that,
+        just to make it seem like I'm celebrating with you
+      </p>
+
+      <button class="primary" id="start">
+        Open your birthday gift
+      </button>
+
+      <p class="tiny">
+        Challenge: Maiyak talo
+      </p>
+
+    </div>
+  </section>
+
+  <!-- MAIN BIRTHDAY EXPERIENCE -->
+
+  <main id="experience" hidden>
+
+<header class="topbar">
+  <button
+    id="back-home"
+    class="secondary"
+    type="button"
+  >
+    ← Main page
+  </button>
+
+  <p>For Mom, with love. ♡</p>
+</header>
+
+    <!-- YOUR YOUTUBE VIDEO -->
+
+    <aside class="song-card" aria-label="Our special song">
+
+      <p class="song-caption">
+        Remember when I used to sing this all the time?<br>
+        This is for little me and for you. Keep exploring after pressing play.
+      </p>
+
+      <iframe
+        class="song-player"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/Lv5j3jJ6gfc?si=2ex5DSbiwjGAEJX2"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+
+    </aside>
+
+    <!-- MEMORY BOOK -->
+
+    <section aria-labelledby="memories-title">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          A few pieces of us and our little family
+        </p>
+
+        <h2 id="memories-title" tabindex="-1">
+          You have always been our home.
+        </h2>
+
+        <p>
+          Snippets of our life together, and whole lifetime of memories to go.
+        </p>
+
+      </div>
+
+      <div class="book">
+
+        <div id="slides">
+
+          <article class="memory">
+
+            <figure class="photo">
+
+              <img
+                src="images/mom-and-me.JPG"
+                alt="Mom and me together"
+              >
+
+              <figcaption>
+                My first home. My forever home.
+              </figcaption>
+
+            </figure>
+
+            <div class="memory-copy">
+
+              <p class="eyebrow">
+                01 / Home isn't just a place
+              </p>
+
+              <h3>
+                Before Canada, before everything…
+                there was you.
+              </h3>
+
+              <p>
+                Before I learned how to figure things out
+                on my own, I had you. Your hugs, your
+                reminders, your clinginess, and your very
+                passionate opinions about what I should do.
+              </p>
+
+              <p>
+                Now that I'm far away, I miss the ordinary
+                things more than I knew I could.
+              </p>
+
+              <p class="aside">
+                Yes, Mommy. Even the sermons.
+                Shocking, I know.
+              </p>
+
+            </div>
+
+          </article>
+
+          <article class="memory" hidden>
+
+            <figure class="photo">
+
+              <img
+                src="images/mom-camping.JPG"
+                alt="A memory of Mom and the meals she made for us"
+                loading="lazy"
+              >
+
+              <figcaption>
+                Love, served warm.
+              </figcaption>
+
+            </figure>
+
+            <div class="memory-copy">
+
+              <p class="eyebrow">
+                02 / The things I understand better now
+              </p>
+
+              <h3>
+                You came home tired.
+                You still took care of us.
+              </h3>
+
+              <p>
+                Every week, you came home from Manila to
+                Cabanatuan. Even when you were tired,
+                you still cooked for me and Dad.
+              </p>
+
+              <p>
+                I don't think I thanked you enough.
+                Back then, it was something I could count
+                on. Now, I think about how much effort
+                it took and how much you wanted to make sure we 
+                were eating properly.
+              </p>
+
+              <p>
+                I miss the strong aroma of your cooking that surrounded the 
+                entire house. That might be the only time I can feel like I'm home again.
+              </p>
+
+            </div>
+
+          </article>
+
+          <!--
+            PHOTO 3:
+            Put your photo at images/funny-memory.jpg
+            or change the src below.
+          -->
+
+          <article class="memory" hidden>
+
+            <figure class="photo">
+
+              <img
+                src="images/funny-memory.jpg"
+                alt="A funny moment between Mom and me"
+                loading="lazy"
+              >
+
+              <figcaption>
+                Your baby girl.
+                Also your favorite headache. <br>
+                (And Uncle)
+              </figcaption>
+
+            </figure>
+
+            <div class="memory-copy">
+
+              <p class="eyebrow">
+                03 / A very special kind of affection
+              </p>
+
+              <h3>
+                Sorry for the ragebait.
+                Kind of.
+              </h3>
+
+              <p>
+                I know teasing you is not the most
+                traditional love language. But you know
+                me: sometimes “I love you” comes out as
+                annoying you until you give me that look.
+              </p>
+
+              <p>
+                I loved being able to still act like a child and that goes against the norm of Filipino families. 
+                I loved being comfortable enough to be
+                my full annoying self. A.K.A My tantrums
+              </p>
+
+              <p class="aside">
+                Birthday mo ngayon, kaya lowkey lang muna.
+                But tomorrow, balik sa dati hehe.
+              </p>
+
+              <p>
+                I miss (but don't) being scolded by you and dad
+              </p>
+
+            </div>
+
+          </article>
+
+          <article class="memory" hidden>
+
+            <figure class="photo">
+
+              <img
+                src="images/mom-dad-and-me.jpg"
+                alt="Mom, Dad, and me together"
+                loading="lazy"
+              >
+
+              <figcaption>
+                The little family you created.
+              </figcaption>
+
+            </figure>
+
+            <div class="memory-copy">
+
+              <p class="eyebrow">
+                04 / To both of my people
+              </p>
+
+              <h3>
+                Homesickness isn't a joke pala talaga.
+              </h3>
+
+              <p>
+                Mom and Dad, I miss your guidance in
+                person. I miss being able to talk without
+                a screen between us. I miss the comfort
+                of knowing you're just there and how I don't need to worry too much when I make a mistake.
+              </p>
+
+              <p>
+                Life here has been so difficult without my main support system.
+                I'm learning how to do things on my own,
+                but that doesn't mean I've stopped
+                needing you, and I don't think I'll grow out of me ever needing my parents.
+                You know how they say that "Your child is only with you until a certain age until they start building a life of their own"?
+                I've never seen it that way because I will always include you both in my future. 
+              </p>
+
+              <p>
+                I love you parentals so so much.
+                Even on the busiest days.
+                Even when I don't say it enough.
+                Even when we are apart.
+              </p>
+
+            </div>
+
+          </article>
+
+          <article class="memory" hidden>
+
+            <figure class="photo">
+
+              <img
+                src="images/canada-memory.jpeg"
+                alt="A moment from my life as a student in Canada"
+                loading="lazy"
+              >
+
+              <figcaption>
+                A new chapter, with your love behind it.
+              </figcaption>
+
+            </figure>
+
+            <div class="memory-copy">
+
+              <p class="eyebrow">
+                05 / What your love made possible
+              </p>
+
+              <h3>
+                There's a lot of you
+                in this chapter of my life.
+              </h3>
+
+              <p>
+                Studying in Canada is a huge opportunity,
+                and I know it isn't cheap or easy to make
+                possible. Thank you for working so hard
+                and supporting me through everything
+                it took to get here.
+              </p>
+
+              <p>
+                I'm grateful to our relatives helping me
+                with housing, too. So much care has gone
+                into giving me this chance.
+              </p>
+
+              <p>
+                Mom, I see your effort. I appreciate it.
+                And I want to make the most of what
+                you've helped me begin. So please continue in supporting me in the future.
+              </p>
+
+            </div>
+
+          </article>
+
+          <!--
+            PHOTO 6:
+            Put your photo at images/our-favorite.jpg
+            or change the src below.
+          -->
+
+          <article class="memory" hidden>
+
+            <figure class="photo">
+
+              <img
+                src="images/our-favorite.jpg"
+                alt="One of my favorite photos with Mom"
+                loading="lazy"
+              >
+
+              <figcaption>
+                Until I can hug you again.
+              </figcaption>
+
+            </figure>
+
+            <div class="memory-copy">
+
+              <p class="eyebrow">
+                06 / Something distance can't change
+              </p>
+
+              <h3>
+                Still your baby girl.
+              </h3>
+
+              <p>
+                I can live in another country, learn new
+                things, and try to act like I have
+                everything figured out.
+                But I'm still your spoiled bratty disney princess at heart.
+              </p>
+
+              <p>
+                Still the girl who misses your food.
+                Still the girl who annoys you everyday.
+                Still the girl who loves you more than
+                this little website could ever explain.
+              </p>
+
+              <p class="aside">
+                Mahirap pa din para magkaroon ng malalaking pangarap sa buhay.
+                Daming sacrifices and hardship.
+              </p>
+
+            </div>
+
+          </article>
+
+        </div>
+
+        <!-- PHOTO NAVIGATION -->
+
+        <nav
+          class="navigation"
+          aria-label="Memory navigation"
+        >
+
+          <button
+            id="previous"
+            class="secondary"
+            disabled
+          >
+            ← Back
+          </button>
+
+          <span
+            id="counter"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            Memory 1 of 6
+          </span>
+
+          <button id="next" class="primary">
+            Next →
+          </button>
+
+        </nav>
+
+        <div class="progress" aria-hidden="true">
+          <div id="progress-fill"></div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- BIRTHDAY LETTER -->
+
+    <section
+      class="letter-section"
+      aria-labelledby="letter-title"
+    >
+
+      <p class="eyebrow">
+        One more thing before you go
+      </p>
+
+      <h2 id="letter-title">
+        The things I don't say enough.
+      </h2>
+
+      <button
+        id="letter-toggle"
+        class="primary"
+        aria-expanded="false"
+        aria-controls="birthday-letter"
+      >
+        Open your birthday letter
+      </button>
+
+      <div
+        id="birthday-letter"
+        class="book letter"
+        hidden
+      >
+
+        <div class="letter-body">
+
+          <h3>
+            Happy birthday, Mommy.
+          </h3>
+
+          <p>
+            I wish I could say this sitting beside you.
+            Preferably while nagchichikahan tayo about God knows what,
+            because you know that's still one of my
+            main priorities.
+          </p>
+
+          <p>
+            But since I can't be there today, I wanted
+            to give you something that says what I don't
+            always know how to say in a normal conversation or every time I posted you with a sweet caption.
+          </p>
+
+          <p>
+            Thank you for all those trips home.
+            For making sure Dad and I had meals you
+            cooked, even when you were tired.
+            For the support, the reminders, the patience,
+            and the love I could always count on.
+            Thank you for the never ending sacrifices you've made as a person, a daughter, an older sister, a wife, and as my mom.
+            For all the money you've spent on me, and all those parties and trips you stressed yourself over planning and budgeting.
+            No one is more grateful for your existence than me because your life is the reason I have mine.
+          </p>
+
+          <p>
+            I'm sorry for the times I let your effort
+            feel ordinary. They weren't small.
+            I just hadn't learned 
+            how much it all really meant to me until I've had to take care of myself.
+          </p>
+
+          <p>
+            Being far away has made me miss things
+            I never thought I'd miss this much.
+            I always had a mindset where I will keep pursuing my
+            canadian dream. But, even just now I'm already contemplating if what I've done was the right thing.
+            I started to feel like I had more of a life to live there than starting over in canada, even though
+            I know the situation in the Philippines is not the best.
+            Sometimes it physically hurts me whenever I miss everyone and the life I had back home.
+          </p>
+
+          <p>
+            And this song… I remember how much
+            I used to sing it when I was younger without thinking about how impactful that could be once we got older.
+            Knowing that it makes you cry just hearing the song, 
+            it makes me cry too because I miss not knowing how the world worked.
+            At the same time I don't miss it because I also know how much you struggled during those times.
+
+          </p>
+
+          <p>
+            We might be older now, and much farther away from each other,
+            but I'm still that same baby girl.
+            The one who loves you, needs you,
+            and will probably never stop teasing you.
+          </p>
+
+          <p>
+            Thank you for supporting my studies and this
+            new chapter in Canada. I hope you're not too mad at me 
+            for doubting my choices even though this was my dream.
+            It's hard to stay positive when your own professors are discouraging you,
+            and with that is the homesickness that comes with it.
+          </p>
+
+          <p>
+            Anyways today, I hope you feel celebrated for being
+            the amazing Atty. Khay everyone counts on. As much as I need my Mom,
+            I'm sure that your co-workers need you more. If I could, I'd still become a lawyer
+            and make a name for myself with important people just like you did.
+          </p>
+
+          <p>
+            I hope you eat something delicious,
+            laugh a lot, and let someone take care
+            of you for a change. You have tons of friends that appreciate you.
+            Happy Birthday, Mom. Ikaw muna ang spoiled for todays video.
+          </p>
+
+          <p>
+            I love you so much.
+            I wish I could give you the biggest hug.
+            Until then, please keep this little piece of me since it's the most I can do for now.
+          </p>
+
+          <p class="signature">
+            Always your baby girl,<br>
+            Tasha <3
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- DAD'S MESSAGE -->
+
+      <details>
+
+        <summary>
+          A little note for Dad, too
+        </summary>
+
+        <div>
+
+          <p>
+            Hi Dad. Don't worry, hindi kita nakalimutan.
+            Birthday lang talaga ni Mom,
+            kaya siya muna yung feeling main character.
+          </p>
+
+          <p>
+            I miss you so much, too.
+            I miss the deep voice scaring me to go to bed.
+            But please take care of yourself, even though we joke about 
+            your unhealthy habits, they're not good.
+            Unless you want to worry me and mom, please stay healthy.
+            Di lang naman si Mommy yung need ko, ikaw din. Who else will I 
+            be able to talk to about technology and stuff? Surely not mom lol.
+          </p>
+
+          <p>
+            Anyways, please give Mom a big hug for me when you can.
+            Then ask her to give you one from me, too.
+            I wish I could be there with both of you celebrating your important days.
+          </p>
+
+        </div>
+
+      </details>
+
+    </section>
+
+    <!-- FINAL BIRTHDAY WISH -->
+
+    <footer>
+
+      <p class="eyebrow">
+        A little birthday wish
+      </p>
+
+      <h2>
+        More laughter.<br>
+        More rest. More time together.
+      </h2>
+
+      <button id="hug" class="primary">
+        Press for a hug from me
+      </button>
+
+      <p
+        id="hug-message"
+        role="status"
+        aria-live="polite"
+      ></p>
+
+      <p class="tiny">
+        Made with a milky way of love, a universe of homesickness,
+        and an earths worth of missing you.
+      </p>
+
+    </footer>
+
+  </main>
+
+  <script>
+
+document.getElementById('back-home').addEventListener("click", () => {
+
+    const video = document.querySelector(".song-player");
+    video.src = video.src;
+
+    experience.hidden = true;
+    intro.hidden = false;
+
+    window.scrollTo(0, 0);
+    startButton.focus({ preventScroll: true });
+})
+
+    const intro = document.getElementById("intro");
+    const experience = document.getElementById("experience");
+    const startButton = document.getElementById("start");
+
+    const slides = [
+      ...document.querySelectorAll(".memory")
+    ];
+
+    const previous = document.getElementById("previous");
+    const next = document.getElementById("next");
+    const counter = document.getElementById("counter");
+    const progress = document.getElementById("progress-fill");
+
+    const letterToggle = document.getElementById("letter-toggle");
+    const letter = document.getElementById("birthday-letter");
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    let current = 0;
+
+    // Open the birthday experience.
+    startButton.addEventListener("click", () => {
+      intro.hidden = true;
+      experience.hidden = false;
+
+      document.getElementById("memories-title").focus({
+        preventScroll: true
+      });
+
+      window.scrollTo(0, 0);
+    });
+
+    // Display the selected memory.
+    function showMemory(index) {
+      current = Math.max(
+        0,
+        Math.min(index, slides.length - 1)
+      );
+
+      slides.forEach((slide, i) => {
+        slide.hidden = i !== current;
+      });
+
+      previous.disabled = current === 0;
+      next.disabled = current === slides.length - 1;
+
+      counter.textContent =
+        `Memory ${current + 1} of ${slides.length}`;
+
+      progress.style.width =
+        `${((current + 1) / slides.length) * 100}%`;
+    }
+
+    previous.addEventListener("click", () => {
+      showMemory(current - 1);
+    });
+
+    next.addEventListener("click", () => {
+      showMemory(current + 1);
+    });
+
+    // Keyboard navigation while the memory book is in view.
+    document.addEventListener("keydown", (event) => {
+      if (experience.hidden) return;
+
+      if (event.altKey || event.ctrlKey || event.metaKey) return;
+
+      const activeElement = document.activeElement;
+      const activeTag = activeElement.tagName;
+
+      if (
+        ["INPUT", "TEXTAREA", "SELECT", "IFRAME"].includes(activeTag) ||
+        activeElement.isContentEditable
+      ) {
+        return;
+      }
+
+      const bookBounds = document
+        .getElementById("slides")
+        .getBoundingClientRect();
+
+      if (
+        bookBounds.bottom < 0 ||
+        bookBounds.top > window.innerHeight
+      ) {
+        return;
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        showMemory(current + 1);
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        showMemory(current - 1);
+      }
+    });
+
+    // Show a gentle placeholder until personal photos are added.
+    document.querySelectorAll(".photo img").forEach((image) => {
+      function showPlaceholder() {
+        if (image.dataset.fallbackShown) return;
+
+        image.dataset.fallbackShown = "true";
+        image.hidden = true;
+
+        const placeholder = document.createElement("div");
+        placeholder.className = "photo-fallback";
+
+        const heart = document.createElement("span");
+        heart.textContent = "♡";
+        heart.setAttribute("aria-hidden", "true");
+
+        const label = document.createElement("p");
+        label.textContent =
+          "A favorite memory belongs here.";
+
+        placeholder.append(heart, label);
+        image.after(placeholder);
+      }
+
+      image.addEventListener("error", showPlaceholder);
+
+      if (image.complete && image.naturalWidth === 0) {
+        showPlaceholder();
+      }
+    });
+
+    // Open or fold the birthday letter.
+    letterToggle.addEventListener("click", () => {
+      const opening = letter.hidden;
+
+      letter.hidden = !opening;
+
+      letterToggle.setAttribute(
+        "aria-expanded",
+        String(opening)
+      );
+
+      letterToggle.textContent = opening
+        ? "Fold the letter"
+        : "Open your birthday letter";
+
+      if (opening) {
+        letter.scrollIntoView({
+          behavior: reducedMotion.matches ? "instant" : "smooth",
+          block: "start"
+        });
+      }
+    });
+
+    // Birthday hug surprise.
+    document.getElementById("hug").addEventListener("click", () => {
+      document.getElementById("hug-message").textContent =
+        "Consider yourself hugged very, very tightly. " +
+        "I love you, Mom. " +
+        "Now please hug Dad for me, too.";
+
+      if (reducedMotion.matches) return;
+
+      for (let i = 0; i < 18; i++) {
+        const heart = document.createElement("span");
+
+        heart.className = "floating-heart";
+        heart.textContent = "♥";
+        heart.setAttribute("aria-hidden", "true");
+
+        heart.style.left = `${Math.random() * 95}%`;
+        heart.style.fontSize = `${18 + Math.random() * 25}px`;
+        heart.style.animationDelay = `${Math.random() * 0.8}s`;
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4200);
+      }
+    });
+
+    showMemory(0);
+  </script>
+
+</body>
+</html>
